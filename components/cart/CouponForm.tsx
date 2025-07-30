@@ -10,9 +10,14 @@ export default function CouponForm() {
         e.preventDefault()
 
         const formData = new FormData(e.currentTarget)
-        const couponName = formData.get('coupon_name')?.toString()!
-        if(!couponName.length) return
+        const rawValue = formData.get('coupon_name');
+        if (!rawValue) return;
+
+        const couponName = rawValue.toString();
+        if (!couponName.length) return;
+
         await applyCoupon(couponName);
+
     }
 
   return (
